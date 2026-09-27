@@ -50,7 +50,7 @@ const FAQ = [
   },
   {
     q: "What can a QR code hold besides a link?",
-    a: "Anything text-shaped. A link opens in the phone's browser, a contact card offers to save itself to the address book, and plain text is simply shown. All three are built into the form.",
+    a: "Anything text-shaped. A link opens in the phone's browser, a WhatsApp code opens a chat with your number, a phone number offers to call it, a contact card offers to save itself to the address book, and plain text is simply shown. All five are built into the form.",
   },
   {
     q: "Where is my data stored?",
@@ -164,8 +164,8 @@ export default function HomePage() {
               <span className="step-num">2</span>
               <h3>Paste your link</h3>
               <p>
-                Or a contact card, or any text. The code is drawn in your
-                browser while you type.
+                Or a WhatsApp chat, a number to call, a contact card or any
+                text. The code is drawn in your browser while you type.
               </p>
             </li>
             <li className="step">

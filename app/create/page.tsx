@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/site-chrome";
 export const metadata: Metadata = {
   title: "Make a QR code — free, no sign-up, no email",
   description:
-    "Type a name and a link and get a QR code straight away. Free, no account, no email, no tracking. The code is built in your browser and never expires.",
+    "Make a QR code for a link, a WhatsApp chat, a phone call, a contact card or plain text. Free, no account, no email, no tracking. The code is built in your browser and never expires.",
   alternates: { canonical: "/create" },
 };
 
@@ -19,8 +19,8 @@ export default function CreatePage() {
         <div className="form-head">
           <h1>Make a QR code</h1>
           <p>
-            Name it, paste your link, and it is ready. Nothing to sign up for
-            and nothing to pay.
+            Pick what it should do, name it, and it is ready. Nothing to sign
+            up for and nothing to pay.
           </p>
         </div>
 

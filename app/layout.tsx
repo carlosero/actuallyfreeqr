@@ -26,6 +26,8 @@ export const metadata: Metadata = {
     "shareable qr code link",
     "url to qr code",
     "vcard qr code",
+    "whatsapp qr code",
+    "phone number qr code",
   ],
   category: "utilities",
   alternates: { canonical: "/" },

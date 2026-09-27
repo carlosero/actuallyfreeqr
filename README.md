@@ -27,7 +27,7 @@ straight there. Three consequences follow, and they are the whole product:
 | Route     | What it does                                                        |
 | --------- | ------------------------------------------------------------------- |
 | `/`       | Landing page: what this is and what it refuses to ask you for.       |
-| `/create` | The form. Name plus a link, some text, or a contact card.            |
+| `/create` | The form. Name plus a link, text, contact card, WhatsApp or phone.   |
 | `/qr`     | The code itself, as large as the screen allows.                      |
 
 ### The `/qr` URL is the QR code
@@ -42,7 +42,10 @@ straight there. Three consequences follow, and they are the whole product:
   `data`, for hand-written links).
 - `data` — the exact text encoded into the QR code. A URL opens in the phone's
   browser, a `BEGIN:VCARD` payload offers to save a contact, anything else is
-  shown as text.
+  shown as text. Two kinds of URL get special treatment: `https://wa.me/<number>`
+  (optionally `?text=<message>`) opens a WhatsApp chat, and `tel:<number>`
+  offers to call it. The form builds both from a plain phone number, and
+  **Edit** reads them back into the right fields.
 
 Because the whole code lives in the address, that link *is* the code. Bookmark
 it, message it to a colleague, put it on a slide — everyone who opens it sees

@@ -490,53 +490,100 @@ mark {
   padding: clamp(22px, 3.5vw, 32px);
 }
 
-.segmented {
-  display: inline-flex;
-  padding: 4px;
-  gap: 4px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 999px;
+/* The type picker. Five across when the card has room for it, otherwise
+   three and two, with the second row stretching so no gap is left over. The
+   radios themselves are visually hidden; each tile is its radio's label. */
+.kinds {
+  container-type: inline-size;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 26px;
 }
 
-.segmented button {
-  appearance: none;
-  border: 0;
-  background: transparent;
-  font: inherit;
-  font-weight: 600;
-  font-size: 0.92rem;
+.kind {
+  position: relative;
+  display: flex;
+  flex: 1 1 30%;
+  min-width: 0;
+}
+
+@container (min-width: 400px) {
+  .kind {
+    flex-basis: 18%;
+  }
+}
+
+.kind-tile {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 14px 6px 12px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
   color: var(--muted);
-  padding: 0.5em 1.05em;
-  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-align: center;
   cursor: pointer;
-  transition: background-color 0.12s ease, color 0.12s ease;
+  user-select: none;
+  transition: transform 0.12s ease, background-color 0.12s ease,
+    border-color 0.12s ease, color 0.12s ease, box-shadow 0.12s ease;
 }
 
-.segmented button[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper);
-}
-
-.segmented button:hover[aria-pressed="false"] {
+.kind-tile svg {
+  width: 26px;
+  height: 26px;
+  flex: none;
   color: var(--ink);
+}
+
+.kind:hover .kind-tile {
+  background: var(--paper);
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.kind:active .kind-tile {
+  transform: translateY(1px);
+}
+
+/* A second, inset border for the chosen tile: twice as heavy, same size. */
+.kind input:checked + .kind-tile {
+  background: var(--accent);
+  border-color: var(--ink);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+
+.kind input:focus-visible + .kind-tile {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.fields {
+  display: grid;
+  gap: 20px;
 }
 
 .field {
   display: block;
-  margin-bottom: 20px;
 }
 
-.field:last-of-type {
-  margin-bottom: 0;
-}
-
+/* The hint drops under the label rather than squeezing both into two lines
+   each when a narrow phone cannot fit them side by side. */
 .field-label {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 12px;
+  gap: 2px 12px;
   font-weight: 600;
   font-size: 0.95rem;
   margin-bottom: 8px;
@@ -578,10 +625,20 @@ mark {
   color: #a8a69c;
 }
 
+.field input[aria-invalid="true"] {
+  border-color: #a3341f;
+}
+
+.field-note {
+  margin-top: 8px;
+  font-size: 0.86rem;
+  color: #a3341f;
+}
+
 .field-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 0 18px;
+  gap: 20px 18px;
 }
 
 .form-error {
